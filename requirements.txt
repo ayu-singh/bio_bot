@@ -1,0 +1,9 @@
+faiss-cpu==1.8.0.post1
+fitz==0.0.1.dev2
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-groq==0.1.9
+langchain-huggingface==0.0.3
+PyMuPDF==1.24.9
+streamlit==1.37.1
+
