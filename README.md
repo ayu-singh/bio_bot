@@ -7,3 +7,6 @@ groq model = "mixtral-8x7b-32768"
 Vector DB = "FAISS"
 splitter = "Simple text splitter" (from langchain)
 UI  = "Streamlit"
+
+
+Notebook RAG_GROQ.ipynb shows the backend working of the application(without streamlit code).
