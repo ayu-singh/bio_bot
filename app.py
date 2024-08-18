@@ -10,7 +10,7 @@ import streamlit as st
 import time
 import os
 
-groq_api_key = os.environ['GROQ_API_KEY'] = "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"
+groq_api_key = os.environ['GROQ_API_KEY'] = st.secrets["groq_key"]
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="mixtral-8x7b-32768")
@@ -90,12 +90,10 @@ if text := st.chat_input("What is up?"):
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(text)
-    print(text)
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         response = retrieval_chain.invoke({"input": text})
-        print("got response")
         response = st.write_stream(response_generator(response["answer"]))
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
