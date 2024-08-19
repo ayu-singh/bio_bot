@@ -33,7 +33,7 @@ document_chain = create_stuff_documents_chain(llm, prompt)
 @st.cache_data
 def get_embeddings():
     '''
-        this function return the embeddings all-MiniLM-L6-v2 model
+        this function returns the embeddings all-MiniLM-L6-v2 model
     '''
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -44,7 +44,7 @@ def get_embeddings():
 @st.cache_data
 def get_db(_embeddings):
     '''
-    this function return the FAISS database containing the embeddings
+    this function returns the FAISS database containing the embeddings
     '''
     vector_store = FAISS.load_local(
         "faiss_db", _embeddings, allow_dangerous_deserialization=True
@@ -93,7 +93,10 @@ if text := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = retrieval_chain.invoke({"input": text})
-        response = st.write_stream(response_generator(response["answer"]))
+        try:
+            response = retrieval_chain.invoke({"input": text})
+            response = st.write_stream(response_generator(response["answer"]))
+        except:
+            response = "I am not able to process this request at this time, please try after some time"
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
