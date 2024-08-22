@@ -1,5 +1,5 @@
 this is an RAG application which lets you talk with 2 chapters of the book "Concepts of biology" which is basically from page no. 89 to 132.
-application hosted url is https://biobot-vqpl3pempqrnfdcx8pch87.streamlit.app/
+application hosted url is https://biobot-assignment.streamlit.app/
 
 THis application is build using Langchain and Groq models
 embedding model = "all-MiniLM-L6-v2"  (hugging face model)
